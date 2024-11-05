@@ -281,3 +281,78 @@ $(function () {
     );
   });
 });
+
+/*===============================================================================
+               Certification js
+  =========================================================================*/
+
+      const imagesData = [
+			{src: "images/certify/Guvi.png", alt: "Gubi Certificate"},
+			{src: "images/certify/certificate.jpg", alt: "Certificate"},
+			{src: "images/certify/mern.png", alt: "MERN Certification"},
+			{src: "images/certify/react certify.png", alt: "React Certification"},
+			{src: "images/certify/Oracle certify.jpg", alt: "Oracle Certification"},
+			{src: "images/certify/Ai certify.png", alt: "AI Certification"},
+			{src: "images/certify/bharat intern.png", alt: "Bharat Intern Certification"},
+			{src: "images/certify/oasis intern.png", alt: "Oasis Intern Certification"},
+			{src: "images/certify/nit.jpeg", alt: "NIT Certification"},
+			{src: "images/certify/mahendra.jpeg", alt: "Symposium Certification"},
+			{src: "images/certify/flint.jpeg", alt: "Symposium Certification"},
+			{src: "images/certify/linumix.jpeg", alt: "Workshop Certification"},
+			{src: "images/certify/eda.jpeg", alt: "Workshop Certification"},
+		];
+		
+			const itemsPerPage = 3;
+			let currentPage = 1;
+		
+			function generatePortfolioItems(start, end) {
+				const portfolioWrapper = document.getElementById("portfolio-wrapper");
+				portfolioWrapper.innerHTML = "";
+		
+				for (let i = start; i < end && i < imagesData.length; i++) {
+					const image = imagesData[i];
+					const html = `
+						<div class="grid-item" style="cursor: pointer; width: calc(33.33% - 20px); margin: 10px; display: inline-block; height: auto;">
+							<div class="port-item" style="border: 2px solid white; border-radius: 8px; overflow: hidden; position: relative; height: auto;">
+								<div class="certify" style="overflow: hidden; position: relative; height: auto;">
+									<img src="${image.src}" alt="${image.alt}" 
+										 style="transition: transform 0.3s ease; width: 100%; height: auto; object-fit: contain; max-height: 300px;">
+									<div class="masks" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+										  background-color: rgba(0, 0, 0, 0.5); opacity: 0; transition: opacity 0.3s;">
+										<span style="color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+											font-size: 1.5em; text-align: center;">View Certificate</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					`;
+					portfolioWrapper.innerHTML += html;
+				}
+			}
+		
+			function changePage(direction) {
+				const totalPages = Math.ceil(imagesData.length / itemsPerPage);
+		
+				if (direction === 'next') {
+					if (currentPage < totalPages) {
+						currentPage++;
+					}
+				} else if (direction === 'prev') {
+					if (currentPage > 1) {
+						currentPage--;
+					}
+				}
+		
+				const start = (currentPage - 1) * itemsPerPage;
+				const end = start + itemsPerPage;
+		
+				generatePortfolioItems(start, end);
+				
+				// update button states
+				document.getElementById("prev-btn").disabled = currentPage === 1;
+				document.getElementById("next-btn").disabled = currentPage === totalPages;
+			}
+		
+			// initialize
+			generatePortfolioItems(0, itemsPerPage);
+			document.getElementById("prev-btn").disabled = true; // Disable "Prev" on the first page
