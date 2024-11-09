@@ -293,6 +293,8 @@ $(function () {
 			{src: "images/certify/react certify.png", alt: "React Certification"},
 			{src: "images/certify/Oracle certify.jpg", alt: "Oracle Certification"},
 			{src: "images/certify/Ai certify.png", alt: "AI Certification"},
+      			{src: "images/certify/javascript.png", alt: " Web Certificate"},
+			{src: "images/certify/rweb.png", alt: "Js Certificate"},
 			{src: "images/certify/nit.jpeg", alt: "NIT Certification"},
 			{src: "images/certify/mahendra.jpeg", alt: "Symposium Certification"},
 			{src: "images/certify/flint.jpeg", alt: "Symposium Certification"},
